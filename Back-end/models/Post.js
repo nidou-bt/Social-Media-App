@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-
+const {Schema} = mongoose;
 const PostSchema = new mongoose.Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref:"User",
+      ref: "User",
     },
     desc: {
       type: String,
@@ -21,4 +21,4 @@ const PostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = Post = mongoose.model("Post", PostSchema);

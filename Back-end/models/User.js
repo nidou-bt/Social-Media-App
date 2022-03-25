@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const {Schema} = mongoose;
 const UserSchema = new mongoose.Schema(
   {
     username: {
@@ -27,39 +27,41 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    followers: {
-      type: Array,
-      default: [],
-    },
-    followings: {
-      type: Array,
-      default: [],
-    },
+    followers: [{
+      type: Schema.Types.ObjectId,
+       ref: 'User',
+       default:[]
+  }],
+    followings: [{
+      type: Schema.Types.ObjectId,
+       ref: 'User',
+       default:[]
+  }],
     isAdmin: {
       type: Boolean,
       default: false,
     },
-    desc:{
-      type:String,
-      max:50,
-      default:""
+    desc: {
+      type: String,
+      max: 50,
+      default: "",
     },
-    city:{
-      type:String,
-      max:50,
-      default:""
+    city: {
+      type: String,
+      max: 50,
+      default: "",
     },
-    from:{
-      type:String,
-      max:50,
-      default:""
+    from: {
+      type: String,
+      max: 50,
+      default: "",
     },
-    relationship:{
-      type:Number,
-      enum:[1,2,3],
-    }
+    relationship: {
+      type: Number,
+      enum: [1, 2, 3],
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = User = mongoose.model("User", UserSchema);
